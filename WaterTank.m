@@ -5,17 +5,14 @@ classdef WaterTank < handle
         satLevel    %satuation Level
     end
     
-    properties (Access =  {?Score})
-        op           % output rate
-        ip            % input rate
-        action      % action 
-    end
-    
     properties (Access = protected)
+        action
         lastState% last state;
         
         tank_w    % tank width
         tank_h    % tank height
+        ip            % input rate
+        op           % output rate
         nl %noise level
         x
         y
@@ -79,7 +76,7 @@ classdef WaterTank < handle
             elseif xh>=self.tank_h
                 dH=-0.01;
             else
-                dH=self.ip*self.action-self.op*sqrt(xh);
+                dH=self.ip*self.action-self.op*sqrt(xh)+self.nl*(rand()-0.5)*2;
             end
             
             ds=dH;

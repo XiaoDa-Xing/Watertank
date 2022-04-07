@@ -13,7 +13,7 @@ if (env.succeed)
         
         [observation,done,info]=env.step(action);
         
-        disp(info);
+        %disp(info);
         if(done)
             break;
         end
